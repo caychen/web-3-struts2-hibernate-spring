@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-3-10 20:52:55 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="org.com.cay.entity.Cost" table="COST">
+        <id name="id" type="integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="string">
+            <column name="NAME" />
+        </property>
+        <property name="baseDuration" type="integer">
+            <column name="BASE_DURATION" />
+        </property>
+        <property name="baseCost" type="float">
+            <column name="BASE_COST" />
+        </property>
+        <property name="unitCost" type="float">
+            <column name="UNIT_COST" />
+        </property>
+        <property name="status" type="string">
+            <column name="STATUS" />
+        </property>
+        <property name="descr" type="string">
+            <column name="DESCR" />
+        </property>
+        <property name="createTime" type="date">
+            <column name="CREATETIME" />
+        </property>
+        <property name="startTime" type="date">
+            <column name="STARTTIME" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+   
+<struts>
+	<package name="main" namespace="/main" extends="json-default">
+		<action name="loginform"><!--如果action类没写，默认由struts2提供，其中只有一句语句：return success;-->
+			<result name="success" type="">/WEB-INF/jsp/login_form.jsp</result>
+		</action>
+		<action name="main">
+			<result name="success" type="redirectAction">
+				<param name="namespace">/cost</param>
+				<param name="actionName">list</param>
+			</result>
+		</action>
+		<action name="login" class="loginAction">
+			<result name="success" type="redirectAction">main</result>
+			<result name="fail" type="redirectAction">loginform</result>
+		</action>
+		<action name="code" class="org.com.cay.action.VerifyCodeAction" method="code">
+			<!--StreamResult负责输出二进制信息--><param name="contentType">image/jpg</param>
+			<result name="success" type="stream">
+				<!--给StreamResult对象的inputName属性赋值-->
+				<!--
+					inputName是一个OGNL表达式，该表达式可以从ValueStack中获取一个InputStream对象，
+					StreamResult就是从这个InputStream对象中读取要输出的二进制信息
+					-->
+				<param name="inputName">codeInputStream</param>
+			</result>
+		</action>
+		<action name="verifycode" class="org.com.cay.action.VerifyCodeAction" method="verify">
+			<!--JSONResult默认会把ValueStack的栈顶(Action)的属性做成json，并返回-->
+			<result name="success" type="json"><!--需要加入struts2-json-plugin-2.3.24.1.jar和json-lib-2.3-jdk15.jar两个jar包，而且package的extends改成json-default-->
+				<!--
+					JSONResult对象的root属性是一个OGNL表达式，通过该表达式可以从ValueStack中获取一个对象，
+					JSONResult将把这个对象做成json字符串并返回
+				-->
+				<param name="root">ok</param>
+			</result>
+		</action>
+	</package>
+</struts>

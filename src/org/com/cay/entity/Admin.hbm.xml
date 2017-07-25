@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-5-8 12:03:20 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="org.com.cay.entity.Admin" table="ADMIN" lazy="false">
+        <id name="id" type="integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="password" type="string">
+            <column name="PASSWORD" />
+        </property>
+        <property name="code" type="string">
+            <column name="ADMIN_CODE" />
+        </property>
+        <property name="name" type="string">
+            <column name="NAME" />
+        </property>
+        <property name="telephone" type="string">
+            <column name="TELEPHONE" />
+        </property>
+        <property name="enrollDate" type="date">
+            <column name="ENROLLDATE" />
+        </property>
+    </class>
+</hibernate-mapping>

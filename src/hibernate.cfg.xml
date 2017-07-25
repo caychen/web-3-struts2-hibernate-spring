@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<!--声明Hibernate配置文件的开始-->
+<hibernate-configuration>
+ <!--表明以下的配置是针对session-factory配置的，SessionFactory是Hibernate中的一个类，这个类主要负责保存HIbernate的配置信息，以及对Session的操作-->
+ <session-factory>
+  <!--hibernate.dialect 只是Hibernate使用的数据库方言,就是要用Hibernate连接哪种类型的数据库服务器。-->
+  <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+  <!--配置数据库的驱动程序，Hibernate在连接数据库时，需要用到数据库的驱动程序-->
+  <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+  <!--设置数据库的连接url:jdbc:mysql://localhost/test,其中localhost表示mysql服务器名称，此处为本机,test是数据库名-->
+  <property name="connection.url">jdbc:mysql://localhost:3306/test</property>
+  <!--连接数据库是用户名-->
+  <property name="connection.username">root</property>
+  <!--连接数据库是密码-->
+  <property name="connection.password">Cay20130621</property>
+  <property name="show_sql">true</property>
+  <property name="format_sql">true</property>
+  <!-- 对象与数据库表格映像文件 -->
+  <mapping resource="org/com/cay/entity/Cost.hbm.xml"/>
+ </session-factory>
+</hibernate-configuration>
